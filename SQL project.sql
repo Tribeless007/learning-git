@@ -132,6 +132,38 @@ SELECT e.Emp_name, d.Dept_name FROM employee e INNER JOIN department d ON e.Dept
 -- Display employee name along with department location
 select emp_name, location from employee inner join department on employee.dept_id = department.dept_id;
 -- Display all employees even if they don’t belong to any department
+SELECT * 
+FROM employee e
+left JOIN department d 
+ON e.Dept_id = d.Dept_id;
+-- Display all departments even if they have no employees
+SELECT *  FROM employee e right JOIN department d ON e.Dept_id = d.Dept_id;
+-- Display employees working in Hyderabad
+select emp_name, location from employee inner join department on employee.dept_id = department.dept_id where department.location ='hyderabad';
+select * from employee;
+select * from department;
+select * from project;
+-- Display employees working in the IT department
+select Emp_name, dept_name from employee inner join department on employee.dept_id = department.Dept_id where department.dept_name ='it';
+-- Display project name along with department name
+select dept_name, project_name from project inner join department on project.dept_id = department.dept_id;
+-- Display employees working on projects of the Analytics department
+select * from employee inner join department on employee.dept_id = department.dept_id where department.dept_name = 'analytics';
+-- Display employees earning more than the company average salary
+select emp_name, salary from employee where salary> (select avg(salary) from employee);
+-- Display employees earning the maximum salary
+select * from employee where salary = (select max(salary) from employee);
+-- Display employees earning more than their department’s average salary
+select emp_name, salary from employee where salary >(select avg(salary) from employee);
+
+
+
+
+
+
+
+
+
 
 
 
