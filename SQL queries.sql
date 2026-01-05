@@ -178,6 +178,71 @@ select city, count(*)
 from employee
 group by city
 order by count(*) desc;
+-- DAY 5 – SUBQUERIES & INTEGRITY (13 Questions)
+-- Employees earning more than average salary
+select * 
+from employee 
+where salary >(select avg(salary) from employee);
+-- Employees earning more than IT department avg
+select * 
+from employee 
+where salary>(select avg(salary) from employee where dept_id = 10);
+-- Employees with salary equal to maximum salary
+select * 
+from employee 
+where salary=(select max(salary) from employee);
+-- Employees earning second highest salary
+SELECT *
+FROM employee
+WHERE salary < (SELECT MAX(salary) FROM employee)
+ORDER BY salary DESC
+LIMIT 1;
+-- Employees not working in IT
+SELECT *
+FROM employee
+WHERE dept_id != 10;
+-- Employees whose department name is ‘Finance’
+select * 
+from employee 
+where dept_id =(
+select dept_id 
+from department 
+where dept_name = 'finance');
+-- Employees working in departments with more than 2 employees
+SELECT *
+FROM employee
+WHERE dept_id IN (
+    SELECT dept_id
+    FROM employee
+    GROUP BY dept_id
+    HAVING COUNT(*) > 2
+);
+-- Employees from city with highest employee count
+SELECT *
+FROM employee
+WHERE city = (
+    SELECT city
+    FROM employee
+    GROUP BY city
+    ORDER BY COUNT(*) DESC
+    LIMIT 1
+);
+-- Employees earning more than city average
+select *
+from employee
+where salary > (
+select avg(salary)
+from employee
+order by city
+);
+-- 
+
+
+
+
+
+
+
 
 
 
