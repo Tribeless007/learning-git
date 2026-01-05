@@ -115,6 +115,69 @@ WHERE join_date BETWEEN '2022-01-01' AND '2022-12-31';
 SELECT *
 FROM employee
 WHERE email LIKE '%gmail%';
+-- Department-wise average salary
+SELECT dept_id, avg(salary)
+FROM employee
+GROUP BY dept_id;
+-- City-wise maximum salary
+select city, max(salary)
+from employee
+group by city;
+-- Departments having more than 2 employees
+SELECT dept_id, COUNT(*) AS emp_count
+FROM employee
+GROUP BY dept_id
+HAVING COUNT(*) > 2;
+-- Cities having total salary > 1,00,000
+select city, sum(salary)
+from employee
+group by city
+having sum(salary) > 100000;
+-- Department-wise employee count
+select dept_id, count(*)
+from employee
+group by dept_id;
+-- City-wise minimum salary
+select city, min(salary)
+from employee
+group by city;
+-- Departments with avg salary > 50k
+select dept_id, avg(salary)
+from employee
+group by dept_id
+having avg(salary) > 50000;
+-- City having highest average salary
+SELECT city, AVG(salary) AS avg_salary
+FROM employee
+GROUP BY city
+ORDER BY avg_salary DESC
+LIMIT 1;
+-- Department with highest employee count
+select dept_id, count(*)
+from employee
+group by dept_id
+order by count(*) desc
+limit 1;
+-- Cities having more than 1 employee
+select city, count(*)
+from employee
+group by city
+order by count(*) > 1;
+-- City-wise salary sum ordered descending
+select city, sum(salary)
+from employee
+group by city
+order by sum(salary) desc;
+-- Department-wise max salary ordered descending
+select dept_id, max(salary) MAXSAL
+from employee
+group by dept_id
+order by MAXSAL desc;
+-- City-wise employee count ordered descending
+select city, count(*)
+from employee
+group by city
+order by count(*) desc;
 
 
 
