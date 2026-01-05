@@ -28,48 +28,86 @@ INSERT INTO employee VALUES
 (9, 'Vikram', 70000, 'Bangalore', 'vikram@gmail.com', 10, '2019-07-07'),
 (10, 'Anita', 30000, 'Chennai', 'anita@gmail.com', 40, '2024-01-01');
 -- Display all employees
-select * from employee;
+select * 
+from employee;
 -- Display only emp_name and salary
-select emp_name, salary from employee;
+select 
+emp_name, salary 
+from employee;
 -- Display employees from Hyderabad
-select * from employee where city = 'hyderabad';
+select * 
+from employee 
+where city = 'hyderabad';
 -- Display employees with salary > 50000
-select * from employee where salary > 50000;
+select * 
+from employee
+ where salary > 50000;
 -- Display employees from Mumbai or Delhi
-select * from employee where city = 'mumbai' or city = 'delhi';
+select * 
+from employee 
+where city = 'mumbai' or city = 'delhi';
 -- Display employees NOT from Hyderabad
-select * from employee where city <> 'hyderabad';
+select * 
+from employee 
+where city <> 'hyderabad';
 -- Display unique cities
-select distinct city from employee;
+select distinct city 
+from employee;
 -- Display employees ordered by salary
-select * from employee order by salary; -- ascending
-select * from employee order by salary desc;  -- descnding
+select * 
+from employee 
+order by salary; -- ascending
+select * 
+from employee 
+order by salary desc;  -- descnding
 -- Display top 3 employees
-select * from employee order by salary desc limit 3;
+select * 
+from employee 
+order by salary desc limit 3;
 -- Count total employees
-select count(*) from employee;
+select count(*) 
+from employee;
 -- Employees with salary between 40k and 60k
-select * from employee where salary between 40000 and 60000 order by salary desc;
+select * 
+from employee 
+where salary between 40000 and 60000 
+order by salary desc;
 -- Employees whose name starts with ‘R’ 
-select * from employee where emp_name like'r%';
+select * 
+from employee 
+where emp_name like'r%';
 -- Employees whose name ends with ‘a’
-select * from employee where emp_name like '%a';
+select * 
+from employee 
+where emp_name like '%a';
 -- Employees whose name contains ‘e’
-select * from employee where emp_name like '%e%';
+select * 
+from employee 
+where emp_name like '%e%';
 -- Employees whose salary != 45000
-select * from employee where salary != 45000;
+select *
+from employee 
+where salary != 45000;
 -- Employees working in IT department
-select * from employee where dept_id = 10;
+select * 
+from employee 
+where dept_id = 10;
 -- Employees NOT working in HR
-select * from employee;
+select * 
+from employee;
 -- Employees joined after 2021
 SELECT *
 FROM employee
 WHERE join_date > '2021-12-31';
 -- Employees from Hyderabad with salary > 45000
-select * from employee where city = 'Hyderabad' and salary > 45000;
+select * 
+from employee 
+where city = 'Hyderabad' and salary > 45000;
 -- Employees from Mumbai ordered by salary desc
-select * from employee where city = 'mumbai' order by salary desc;
+select * 
+from employee 
+where city = 'mumbai' 
+order by salary desc;
 -- Display second highest salary
 SELECT emp_name,salary
 FROM employee
@@ -77,13 +115,17 @@ WHERE salary < (SELECT MAX(salary) FROM employee)
 ORDER BY salary DESC
 LIMIT 1;
 -- Find MAX salary
-select max(salary) from employee;
+select max(salary) 
+from employee;
 -- Find MIN salary
-select min(salary) from employee;
+select min(salary) 
+from employee;
 -- Find AVG salary
-select avg(salary) from employee;
+select avg(salary) 
+from employee;
 -- Find total salary expense
-select sum(salary) from employee;
+select sum(salary) 
+from employee;
 -- Count employees in each city
 SELECT city, COUNT(*) 
 FROM employee
@@ -93,9 +135,11 @@ SELECT dept_id, COUNT(*)
 FROM employee
 GROUP BY dept_id;
 -- Display employee name in UPPER case
-select upper(emp_name) from employee;
+select upper(emp_name) 
+from employee;
 -- Display employee name length
-select length(emp_name) from employee;
+select length(emp_name) 
+from employee;
 -- Display employees with name length > 5
 SELECT *
 FROM employee
@@ -186,15 +230,22 @@ where salary >(select avg(salary) from employee);
 -- Employees earning more than IT department avg
 select * 
 from employee 
-where salary>(select avg(salary) from employee where dept_id = 10);
+where salary>(
+select avg(salary) 
+from employee 
+where dept_id = 10);
 -- Employees with salary equal to maximum salary
 select * 
 from employee 
-where salary=(select max(salary) from employee);
+where salary=(
+select max(salary) 
+from employee);
 -- Employees earning second highest salary
 SELECT *
 FROM employee
-WHERE salary < (SELECT MAX(salary) FROM employee)
+WHERE salary < (
+SELECT MAX(salary) 
+FROM employee)
 ORDER BY salary DESC
 LIMIT 1;
 -- Employees not working in IT
